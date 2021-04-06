@@ -1,0 +1,97 @@
+/* ! ABSOLUTLEY NOTHING HIGHER THAN A ELEMENT TAG */
+/* 
+#prop-organization {
+  -Position & Display
+  -Dimentions & Spacing
+  -Appearence
+  -Font & Text
+  -Animations & Transitions
+  -other (overflow, opacity, ...etc)
+}
+*/
+/**|| VARIABLES */
+:root {
+  --main-font-size: 62.5%;
+  --ff-head: "Noto Sans HK", sans-serif;
+  --ff-body: "Noto Sans", sans-serif;
+  --fw-reg: 400;
+  --fw-med: 500;
+  --fw-bold: 900;
+
+  --clr-black: #291528;
+  --clr-white: #f7f3e3;
+  --clr-purp: #502a4d;
+  --clr-primary: #ff8811;
+  --clr-primary-1: #f57a00;
+  --clr-secondary: #5e8c97;
+  --clr-secondary-1: #4f747d;
+  --clr-danger: #f71735;
+  --clr-danger-1: #ec0927;
+
+  --bor-radius: 10px;
+}
+
+/**|| GENERAL RESETS */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* 
+  This defines what 1rem is
+  1rem = 10px; 10px/16px = 62.5%
+  */
+  font-size: var(--main-font-size);
+}
+
+body {
+  /*! Somehow brings to loading page to the top */
+  /* padding-top: 0.1rem; */
+
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.1rem 0.5rem 0 0.5rem;
+  min-height: 100vh;
+
+  background-color: var(--clr-black);
+
+  font-family: var(--ff-body);
+  font-weight: var(--fw-reg);
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--ff-head);
+  font-weight: var(--fw-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  display: block;
+  max-width: 100%;
+}
