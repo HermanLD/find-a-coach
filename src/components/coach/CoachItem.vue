@@ -1,5 +1,5 @@
 <template>
-  <li class="coach-item app-card">
+  <li class="coach-item app-card" @click="toDetails">
     <h3 class="coach-name">
       {{ firstName }}
       <span class="coach-name-last">
@@ -33,12 +33,16 @@ export default {
   components: {
     "coach-areas": CoachAreas,
   },
+  methods: {
+    toDetails() {
+      this.$router.push(`/coaches/${this.id}`);
+    },
+  },
 };
 </script>
 
 <style>
 .coach-item {
-  background-color: var(--clr-white);
   letter-spacing: 0.1rem;
   cursor: pointer;
   transition: 0.2s ease-out;

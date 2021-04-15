@@ -1,12 +1,15 @@
 <template>
-  <nav class="app-nav">
-    <app-select></app-select>
-
+  <nav class="app-nav app-card">
+    <!-- <app-select></app-select> -->
     <div>
-      <app-btn class="nav-btn">COACHES</app-btn>
-      <app-btn @onClick="login" v-if="!isLoggedIn">SIGNIN</app-btn>
-      <app-btn @onClick="login" v-if="isLoggedIn">SIGNOUT</app-btn>
+      <app-btn @onClick="toCoaches" class="nav-btn">COACHES</app-btn>
+      <app-btn @onClick="logout">SIGNOUT</app-btn>
+      <app-btn @onClick="login">SIGNIN</app-btn>
+      <!-- <app-btn @onClick="logout" v-if="isLoggedIn">SIGNOUT</app-btn>
+      <app-btn @onClick="login" v-else>SIGNIN</app-btn> -->
     </div>
+
+    <app-btn v-if="isLoggedIn">REQUESTS</app-btn>
   </nav>
 </template>
 
@@ -14,7 +17,13 @@
 export default {
   props: {
     login: Function,
+    logout: Function,
     isLoggedIn: Boolean,
+  },
+  methods: {
+    toCoaches() {
+      this.$router.push("/coaches");
+    },
   },
 };
 </script>
@@ -28,7 +37,6 @@ export default {
   margin-bottom: 0.5rem;
   border-radius: var(--bor-radius);
   padding: 1rem 1rem;
-  background-color: var(--clr-white);
 }
 .nav-btn {
   margin-right: 0.5rem;

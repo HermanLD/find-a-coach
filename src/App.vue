@@ -1,13 +1,14 @@
 <template>
   <h1 class="app-header">FIND-A-COACH</h1>
 
-  <app-nav :login="login" :isLoggedIn="isLoggedIn"></app-nav>
+  <app-nav :login="login" :logout="logout" :isLoggedIn="isLoggedIn"></app-nav>
 
   <!-- Leads to CoachesList first -->
-  <router-view />
+
+  <router-view> </router-view>
 
   <teleport to="body">
-    <app-loader v-if="isLoading"></app-loader>
+    <app-loader v-if="requestIsLoading || coachesIsLoading"></app-loader>
   </teleport>
 </template>
 
@@ -21,14 +22,22 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch("login");
+      this.$router.push("/signin");
+    },
+    logout() {
+      this.$store.dispatch("logOut");
     },
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "isLoggedIn",
-      isLoading: "isLoading",
+      requestIsLoading: "requests/isLoading",
+      coachesIsLoading: "coaches/isLoading",
     }),
+  },
+  created() {
+    this.$store.dispatch("coaches/fetchCoaches");
+    this.$store.dispatch("autoLogin");
   },
 };
 </script>
@@ -55,5 +64,6 @@ export default {
   padding: 2rem 1rem;
   margin-bottom: 0.5rem;
   border-radius: var(--bor-radius);
+  background-color: var(--clr-white);
 }
 </style>

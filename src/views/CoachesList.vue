@@ -9,7 +9,7 @@
         :lastName="coach.lastName"
         :specialties="coach.areas"
         :description="coach.description"
-        :hourlyRate="coach.hourlyRate"
+        :hourlyRate="parseInt(coach.hourlyRate, 10)"
       ></coach-li>
     </ul>
   </section>

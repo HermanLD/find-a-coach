@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  emits: ["onClick"],
   methods: {
     handleClick() {
       this.$emit("onClick");
